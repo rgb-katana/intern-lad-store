@@ -1,8 +1,8 @@
-import styled from 'styled-components';
-import ProductList from '../features/ProductList/ProductList';
-import Pagination from '../features/Pagination/Pagination';
-import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import styled from "styled-components";
+import ProductList from "../features/ProductList/ProductList";
+import Pagination from "../features/Pagination/Pagination";
+import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const StyledShop = styled.div`
   padding: 2rem;
@@ -10,12 +10,12 @@ const StyledShop = styled.div`
 
 function Shop() {
   const { page } = useParams();
-  const { isLoading } = useSelector(state => state.productList);
+  const { isLoading } = useSelector((state) => state.productList);
 
   return (
     <StyledShop>
-      {!isLoading && <Pagination page={Number(page)} />}
       <ProductList page={Number(page)} />
+      {!isLoading && <Pagination page={Number(page)} />}
     </StyledShop>
   );
 }
