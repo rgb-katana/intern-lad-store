@@ -19,7 +19,6 @@ const StyledProductItem = styled.div`
 
 const SlideContainer = styled.div`
   width: 50rem;
-  height: 50rem;
   @media (max-width: 768px) {
     width: 35rem;
     height: 25rem;
