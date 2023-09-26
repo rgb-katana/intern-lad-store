@@ -17,7 +17,6 @@ const StyledProductList = styled.div`
   gap: 2rem;
   height: 100%;
   margin-bottom: 2rem;
-  position: relative;
 `;
 
 function ProductList({ page }) {

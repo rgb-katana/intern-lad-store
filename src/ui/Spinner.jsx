@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled, { keyframes } from 'styled-components';
 
 const rotate = keyframes`
   0%, 100% {
@@ -19,7 +19,7 @@ const rotate = keyframes`
 const Spinner = styled.div`
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: 46.5%;
   display: inline-block;
   width: 64px;
   height: 64px;

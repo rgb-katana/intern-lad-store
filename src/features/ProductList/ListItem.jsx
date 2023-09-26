@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { addItem, getCurrentQuantityById } from '../Cart/cartSlice';
 import UpdateItemQuantity from '../Cart/UpdateItemQuantity';
+import { useNavigate } from 'react-router-dom';
 
 const StyledListItem = styled.div`
   background-color: white;
@@ -19,6 +20,7 @@ const StyledListItem = styled.div`
     flex-direction: column;
     height: 40rem;
   }
+  cursor: pointer;
 `;
 
 const ImgContainer = styled.div`
@@ -42,8 +44,13 @@ const StyledTitlePrice = styled.div`
 `;
 
 function ListItem({ product }) {
-  // console.log(product);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const handleNavigate = function (e) {
+    if (e.target.type === 'submit') return;
+    navigate(`/shop/product/${product.id}`);
+  };
 
   const currentQuantity = useSelector(getCurrentQuantityById(product.id));
   const isInCart = currentQuantity > 0;
@@ -58,7 +65,7 @@ function ListItem({ product }) {
   }
 
   return (
-    <StyledListItem>
+    <StyledListItem onClick={e => handleNavigate(e)}>
       <ImgContainer>
         <StyledImg src={product.images[0]} alt={product.title} />
       </ImgContainer>
