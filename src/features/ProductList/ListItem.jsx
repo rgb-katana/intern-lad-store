@@ -1,4 +1,7 @@
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { addItem, getCurrentQuantityById } from "../Cart/cartSlice";
+import UpdateItemQuantity from "../Cart/UpdateItemQuantity";
 
 const StyledListItem = styled.div`
   background-color: white;
@@ -38,6 +41,20 @@ const StyledTitlePrice = styled.div`
 
 function ListItem({ product }) {
   // console.log(product);
+  const dispatch = useDispatch();
+
+  const currentQuantity = useSelector(getCurrentQuantityById(product.id));
+  const isInCart = currentQuantity > 0;
+
+  function handleAddToCart() {
+    const newProduct = {
+      ...product,
+      quantity: 1,
+      totalPrice: product.price * 1,
+    };
+    dispatch(addItem(newProduct));
+  }
+
   return (
     <StyledListItem>
       <ImgContainer>
@@ -47,6 +64,13 @@ function ListItem({ product }) {
         <span>{product.title}</span>
         <span>${product.price}</span>
       </StyledTitlePrice>
+      {isInCart && (
+        <UpdateItemQuantity
+          product={product}
+          currentQuantity={currentQuantity}
+        />
+      )}
+      {!isInCart && <button onClick={handleAddToCart}>Add to cart</button>}
     </StyledListItem>
   );
 }
