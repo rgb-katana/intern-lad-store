@@ -17,6 +17,9 @@ const rotate = keyframes`
 `;
 
 const Spinner = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
   display: inline-block;
   width: 64px;
   height: 64px;

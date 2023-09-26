@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const StyledListItem = styled.div`
   background-color: white;
@@ -37,7 +37,7 @@ const StyledTitlePrice = styled.div`
 `;
 
 function ListItem({ product }) {
-  console.log(product);
+  // console.log(product);
   return (
     <StyledListItem>
       <ImgContainer>

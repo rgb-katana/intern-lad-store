@@ -1,9 +1,9 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { getProducts } from './productListSlice';
-import styled from 'styled-components';
-import { useEffect } from 'react';
-import ListItem from './ListItem';
-import Spinner from '../../ui/Spinner';
+import { useDispatch, useSelector } from "react-redux";
+import { getProducts } from "./productListSlice";
+import styled from "styled-components";
+import { useEffect } from "react";
+import ListItem from "./ListItem";
+import Spinner from "../../ui/Spinner";
 
 const StyledProductList = styled.div`
   display: grid;
@@ -14,11 +14,12 @@ const StyledProductList = styled.div`
   gap: 2rem;
   height: 100%;
   margin-bottom: 2rem;
+  position: relative;
 `;
 
 function ProductList({ page }) {
-  const { productList } = useSelector(state => state.productList);
-  const { isLoading } = useSelector(state => state.productList);
+  const { productList } = useSelector((state) => state.productList);
+  const { isLoading } = useSelector((state) => state.productList);
 
   const dispatch = useDispatch();
 
@@ -34,7 +35,7 @@ function ProductList({ page }) {
     <StyledProductList>
       {isLoading && <Spinner />}
       {productList.length !== 0 &&
-        productList.map(product => (
+        productList.map((product) => (
           <ListItem product={product} key={product.id} />
         ))}
     </StyledProductList>
