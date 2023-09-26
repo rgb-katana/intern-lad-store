@@ -1,11 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   cart: [],
 };
 
 const cartSlice = createSlice({
-  name: "cart",
+  name: 'cart',
   initialState,
   reducers: {
     addItem(state, action) {
@@ -13,17 +13,17 @@ const cartSlice = createSlice({
     },
     deleteItem(state, action) {
       // Можно сделать пейлоад айди просто
-      state.cart = state.cart.filter((item) => item.id !== action.payload.id);
+      state.cart = state.cart.filter(item => item.id !== action.payload.id);
     },
     increaseItemQuantity(state, action) {
       // Можно сделать пейлоад айди просто
-      const item = state.cart.find((item) => item.id === action.payload.id);
+      const item = state.cart.find(item => item.id === action.payload.id);
       item.quantity++;
       item.totalPrice = item.quantity * item.price;
     },
     decreaseItemQuantity(state, action) {
       // тоже можно сделать пейлоад простым айди и ещё аккуратнее с последним ифом
-      const item = state.cart.find((item) => item.id === action.payload.id);
+      const item = state.cart.find(item => item.id === action.payload.id);
       item.quantity--;
       item.totalPrice = item.quantity * item.price;
 
@@ -45,10 +45,10 @@ export const {
   clearCart,
 } = cartSlice.actions;
 
-export const getCurrentQuantityById = (id) => (state) =>
-  state.cart.cart.find((item) => item.id === id)?.quantity ?? 0;
+export const getCurrentQuantityById = id => state =>
+  state.cart.cart.find(item => item.id === id)?.quantity ?? 0;
 
-export const getTotalCartPrice = (state) =>
+export const getTotalCartPrice = state =>
   state.cart.cart.reduce((accum, cur) => accum + cur.totalPrice, 0);
 
-// export const getCart = (state) => state.cart.cart;
+export const getCart = state => state.cart.cart;

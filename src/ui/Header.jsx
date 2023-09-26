@@ -1,6 +1,8 @@
-import { NavLink } from "react-router-dom";
-import styled from "styled-components";
-import { HiOutlineShoppingCart } from "react-icons/hi2";
+import { NavLink } from 'react-router-dom';
+import styled from 'styled-components';
+import { HiOutlineShoppingCart } from 'react-icons/hi2';
+import { useSelector } from 'react-redux';
+import { getCart } from '../features/Cart/cartSlice';
 
 const StyledHeader = styled.header`
   background-color: var(--color-main-600);
@@ -22,6 +24,7 @@ const StyledNavLink = styled(NavLink)`
   justify-content: center;
   align-items: center;
   transition: all 0.5s ease-out;
+  gap: 1rem;
 
   &:link,
   &:visited {
@@ -47,14 +50,19 @@ const StyledCartIcon = styled(HiOutlineShoppingCart)`
   height: auto;
 `;
 
+const StyledCounter = styled.div``;
+
 function Header() {
+  const cart = useSelector(getCart);
+
   return (
     <StyledHeader>
       <StyledNavLink to="/">
         <span>Fake Store</span>
       </StyledNavLink>
-      <StyledNavLink to="/cart">
+      <StyledNavLink to="shop/cart">
         <StyledCartIcon />
+        <StyledCounter>{cart.length}</StyledCounter>
       </StyledNavLink>
     </StyledHeader>
   );
