@@ -5,12 +5,12 @@ const StyledPagination = styled.ul`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
 `;
 
 const StyledNavLink = styled(NavLink)`
   width: auto;
-  padding: 0.3rem;
+  padding: 0.3rem 0.7rem;
   align-self: center;
   text-align: center;
 
@@ -20,6 +20,7 @@ const StyledNavLink = styled(NavLink)`
     background-color: var(--color-main-100);
     font-size: 1.6rem;
     font-weight: 500;
+    font-size: 2rem;
   }
 
   &:hover,
