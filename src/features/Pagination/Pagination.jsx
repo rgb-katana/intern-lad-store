@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -67,3 +69,7 @@ function Pagination({ page }) {
 }
 
 export default Pagination;
+
+Pagination.propTypes = {
+  page: PropTypes.number,
+};

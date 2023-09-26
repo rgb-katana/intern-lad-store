@@ -1,6 +1,8 @@
-import { useDispatch } from "react-redux";
-import styled from "styled-components";
-import { decreaseItemQuantity, increaseItemQuantity } from "./cartSlice";
+import PropTypes from 'prop-types';
+
+import { useDispatch } from 'react-redux';
+import styled from 'styled-components';
+import { decreaseItemQuantity, increaseItemQuantity } from './cartSlice';
 
 const StyledUpdateItemQuantity = styled.div``;
 
@@ -17,3 +19,8 @@ function UpdateItemQuantity({ product, currentQuantity }) {
 }
 
 export default UpdateItemQuantity;
+
+UpdateItemQuantity.propTypes = {
+  product: PropTypes.object,
+  currentQuantity: PropTypes.number,
+};

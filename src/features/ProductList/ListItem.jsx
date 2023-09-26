@@ -1,7 +1,9 @@
-import { useDispatch, useSelector } from "react-redux";
-import styled from "styled-components";
-import { addItem, getCurrentQuantityById } from "../Cart/cartSlice";
-import UpdateItemQuantity from "../Cart/UpdateItemQuantity";
+import PropTypes from 'prop-types';
+
+import { useDispatch, useSelector } from 'react-redux';
+import styled from 'styled-components';
+import { addItem, getCurrentQuantityById } from '../Cart/cartSlice';
+import UpdateItemQuantity from '../Cart/UpdateItemQuantity';
 
 const StyledListItem = styled.div`
   background-color: white;
@@ -76,3 +78,7 @@ function ListItem({ product }) {
 }
 
 export default ListItem;
+
+ListItem.propTypes = {
+  product: PropTypes.object,
+};

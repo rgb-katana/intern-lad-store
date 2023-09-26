@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from './productListSlice';
 import styled from 'styled-components';
@@ -24,10 +26,6 @@ function ProductList({ page }) {
 
   const dispatch = useDispatch();
 
-  if (page > 10 || page < 1) {
-    return <Navigate to="*" replace={true} />;
-  }
-
   useEffect(
     function () {
       dispatch(getProducts(page));
@@ -35,6 +33,10 @@ function ProductList({ page }) {
     },
     [page, dispatch]
   );
+
+  if (page > 10 || page < 1) {
+    return <Navigate to="/*" replace={true} />;
+  }
 
   return (
     <StyledProductList>
@@ -48,3 +50,7 @@ function ProductList({ page }) {
 }
 
 export default ProductList;
+
+ProductList.propTypes = {
+  page: PropTypes.number,
+};

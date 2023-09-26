@@ -33,7 +33,7 @@ const productListSlice = createSlice({
   reducers: {},
   extraReducers: builder =>
     builder
-      .addCase(getProducts.pending, (state, action) => {
+      .addCase(getProducts.pending, state => {
         state.productList = [];
         state.isLoading = true;
       })
@@ -41,7 +41,7 @@ const productListSlice = createSlice({
         state.isLoading = false;
         state.productList = action.payload;
       })
-      .addCase(getProducts.rejected, (state, action) => {
+      .addCase(getProducts.rejected, state => {
         state.isLoading = false;
         state.error = 'There was a problem fetching products. Try later.';
       }),
