@@ -11,6 +11,10 @@ export const StyledCartItem = styled.div`
   border: 1px solid var(--color-grey-200);
   display: grid;
   grid-template-columns: 2fr 1fr 2fr;
+  @media (max-width: 768px) {
+    padding: 0.2rem 0.3rem;
+    font-size: 1.2rem;
+  }
 `;
 
 export const InnerContainer = styled.div`
@@ -29,6 +33,14 @@ export const InnerContainer = styled.div`
   &:last-child {
     justify-content: right;
   }
+
+  @media (max-width: 768px) {
+    padding: 0.2rem 0.3rem;
+    font-size: 1.2rem;
+    &:last-child {
+      justify-content: center;
+    }
+  }
 `;
 
 export const Price = styled.span`
@@ -44,7 +56,7 @@ function CartItem({ item }) {
         <span>{item.title}</span>
       </InnerContainer>
       <InnerContainer>
-        <Price>${item.price}</Price>
+        <span>{currentQuantity} &times;</span>&nbsp;<Price>${item.price}</Price>
       </InnerContainer>
       <InnerContainer>
         <UpdateItemQuantity product={item} currentQuantity={currentQuantity} />

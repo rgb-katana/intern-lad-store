@@ -7,7 +7,7 @@ const divStyle = {
   justifyContent: 'center',
   backgroundSize: 'cover',
   backgroundPosition: 'center',
-  height: '500px',
+  height: '40rem',
 };
 
 function Slider({ images }) {

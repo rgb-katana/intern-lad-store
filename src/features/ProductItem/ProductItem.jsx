@@ -5,11 +5,16 @@ import Slider from './Slider';
 import { useDispatch, useSelector } from 'react-redux';
 import { addItem, getCurrentQuantityById } from '../Cart/cartSlice';
 import UpdateItemQuantity from '../Cart/UpdateItemQuantity';
+import Button from '../../ui/Button';
 
 const StyledProductItem = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 43rem 1fr auto;
+  }
 `;
 
 const SlideContainer = styled.div`
@@ -18,6 +23,8 @@ const SlideContainer = styled.div`
   @media (max-width: 768px) {
     width: 35rem;
     height: 25rem;
+    margin: 0 auto;
+    grid-row: 1 / 2;
   }
 `;
 
@@ -27,12 +34,21 @@ const InfoContainer = styled.div`
   padding: 1rem 0.5rem;
   border: 1px solid var(--color-grey-200);
   background-color: white;
+  @media (max-width: 768px) {
+    grid-row: 2 / 3;
+  }
 `;
 
 const BuyContainer = styled.div`
   margin-top: 2rem;
   grid-column: 1 / 2;
   grid-row: 2 / -1;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  @media (max-width: 768px) {
+    grid-row: 3 / -1;
+  }
 `;
 
 function ProductItem({ product }) {
@@ -70,7 +86,7 @@ function ProductItem({ product }) {
             currentQuantity={currentQuantity}
           />
         )}
-        {!isInCart && <button onClick={handleAddToCart}>Add to cart</button>}
+        {!isInCart && <Button onClick={handleAddToCart}>Add to cart</Button>}
       </BuyContainer>
     </StyledProductItem>
   );

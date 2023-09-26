@@ -7,6 +7,9 @@ import ProductItem from '../features/ProductItem/ProductItem';
 
 const StyledProduct = styled.div`
   padding: 2rem;
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
 `;
 
 function Product() {

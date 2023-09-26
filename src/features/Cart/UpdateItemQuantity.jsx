@@ -3,17 +3,35 @@ import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { decreaseItemQuantity, increaseItemQuantity } from './cartSlice';
+import Button from '../../ui/Button';
 
-const StyledUpdateItemQuantity = styled.div``;
+const StyledUpdateItemQuantity = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+`;
 
 function UpdateItemQuantity({ product, currentQuantity }) {
   const dispatch = useDispatch();
 
   return (
     <StyledUpdateItemQuantity>
-      <button onClick={() => dispatch(decreaseItemQuantity(product))}>-</button>
+      <Button
+        variation="primary"
+        size="medium"
+        onClick={() => dispatch(decreaseItemQuantity(product))}
+      >
+        -
+      </Button>
       <span>{currentQuantity}</span>
-      <button onClick={() => dispatch(increaseItemQuantity(product))}>+</button>
+      <Button
+        variation="primary"
+        size="medium"
+        onClick={() => dispatch(increaseItemQuantity(product))}
+      >
+        +
+      </Button>
     </StyledUpdateItemQuantity>
   );
 }

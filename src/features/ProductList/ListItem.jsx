@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { addItem, getCurrentQuantityById } from '../Cart/cartSlice';
 import UpdateItemQuantity from '../Cart/UpdateItemQuantity';
 import { useNavigate } from 'react-router-dom';
+import Button from '../../ui/Button';
 
 const StyledListItem = styled.div`
   background-color: white;
@@ -12,13 +13,16 @@ const StyledListItem = styled.div`
   height: 30rem;
   max-width: 80rem;
   padding: 1rem;
-  display: flex;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 2fr 1fr;
   justify-content: flex-start;
   align-items: center;
   gap: 1rem;
   @media (max-width: 768px) {
-    flex-direction: column;
-    height: 40rem;
+    height: 32rem;
+    grid-template-columns: 1fr;
+    grid-template-rows: 2fr 1fr 1fr;
   }
   cursor: pointer;
 `;
@@ -34,13 +38,26 @@ const ImgContainer = styled.div`
 const StyledImg = styled.img`
   width: 100%;
   height: 100%;
-  object-fit: fill;
+  object-fit: contain;
 `;
 
 const StyledTitlePrice = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 0.5rem;
+`;
+
+const BuyContainer = styled.div`
+  grid-column: 1 / -1;
+  grid-row: 2 / -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media (max-width: 768px) {
+    grid-column: 1;
+    grid-row: 3 / -1;
+  }
 `;
 
 function ListItem({ product }) {
@@ -70,16 +87,18 @@ function ListItem({ product }) {
         <StyledImg src={product.images[0]} alt={product.title} />
       </ImgContainer>
       <StyledTitlePrice>
-        <span>{product.title}</span>
+        <span style={{ textAlign: 'center' }}>{product.title}</span>
         <span>${product.price}</span>
       </StyledTitlePrice>
-      {isInCart && (
-        <UpdateItemQuantity
-          product={product}
-          currentQuantity={currentQuantity}
-        />
-      )}
-      {!isInCart && <button onClick={handleAddToCart}>Add to cart</button>}
+      <BuyContainer>
+        {isInCart && (
+          <UpdateItemQuantity
+            product={product}
+            currentQuantity={currentQuantity}
+          />
+        )}
+        {!isInCart && <Button onClick={handleAddToCart}>Add to cart</Button>}
+      </BuyContainer>
     </StyledListItem>
   );
 }

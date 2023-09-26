@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import CartItem, { InnerContainer, Price, StyledCartItem } from './CartItem';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearCart, getTotalCartPrice } from './cartSlice';
+import Button from '../../ui/Button';
 
 const StyledCartList = styled.ul`
   margin-top: 2rem;
@@ -35,7 +36,7 @@ function CartList({ cart }) {
           </h3>
         </InnerContainer>
         <InnerContainer>
-          <button onClick={() => dispatch(clearCart())}>Clear Cart</button>
+          <Button onClick={() => dispatch(clearCart())}>Clear Cart</Button>
         </InnerContainer>
       </StyledCartItem>
     </StyledCartList>
