@@ -1,27 +1,77 @@
 import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
+import Slider from './Slider';
+import { useDispatch, useSelector } from 'react-redux';
+import { addItem, getCurrentQuantityById } from '../Cart/cartSlice';
+import UpdateItemQuantity from '../Cart/UpdateItemQuantity';
 
 const StyledProductItem = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 3fr 1fr;
+  grid-template-rows: 1fr 1fr;
+`;
+
+const SlideContainer = styled.div`
+  width: 50rem;
+  height: 50rem;
+  @media (max-width: 768px) {
+    width: 35rem;
+    height: 25rem;
+  }
+`;
+
+const InfoContainer = styled.div`
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  padding: 1rem 0.5rem;
+  border: 1px solid var(--color-grey-200);
+  background-color: white;
+`;
+
+const BuyContainer = styled.div`
+  margin-top: 2rem;
+  grid-column: 1 / 2;
+  grid-row: 2 / -1;
 `;
 
 function ProductItem({ product }) {
   const { brand, title, price, description, images } = product;
 
+  const currentQuantity = useSelector(getCurrentQuantityById(product.id));
+  const isInCart = currentQuantity > 0;
+
+  const dispatch = useDispatch();
+
+  function handleAddToCart() {
+    const newProduct = {
+      ...product,
+      quantity: 1,
+      totalPrice: product.price * 1,
+    };
+    dispatch(addItem(newProduct));
+  }
+
   return (
     <StyledProductItem>
-      <div>
-        <h3>{brand}</h3>
-        <h2>{title}</h2>
-      </div>
-      <div></div>
-      <div>
-        <p>{description}</p>
-        <span>${price}</span>
-      </div>
+      <SlideContainer>
+        <Slider images={images} />
+      </SlideContainer>
+      <InfoContainer>
+        <h3>Brand: {brand}</h3>
+        <h2>Product title: {title}</h2>
+        <p>Description: {description}</p>
+        <span>Price: ${price}</span>
+      </InfoContainer>
+      <BuyContainer>
+        {isInCart && (
+          <UpdateItemQuantity
+            product={product}
+            currentQuantity={currentQuantity}
+          />
+        )}
+        {!isInCart && <button onClick={handleAddToCart}>Add to cart</button>}
+      </BuyContainer>
     </StyledProductItem>
   );
 }
