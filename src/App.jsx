@@ -5,6 +5,7 @@ import Shop from './pages/Shop';
 import Product from './pages/Product';
 import { Provider } from 'react-redux';
 import store from './store';
+import PageNotFound from './pages/PageNotFound';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="shop/products/:page" element={<Shop />} />
             <Route path="shop/product/:id" element={<Product />} />
           </Route>
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
     </Provider>
