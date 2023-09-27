@@ -29,7 +29,7 @@ const SlideContainer = styled.div`
 
 const InfoContainer = styled.div`
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
   padding: 1rem 0.5rem;
   border: 1px solid var(--color-grey-200);
   background-color: white;

@@ -11,6 +11,9 @@ export const StyledCartItem = styled.div`
   border: 1px solid var(--color-grey-200);
   display: grid;
   grid-template-columns: 2fr 1fr 2fr;
+  border: 1px solid var(--color-grey-300);
+  border-radius: var(--border-radius-sm);
+  box-shadow: var(--shadow-sm);
   @media (max-width: 768px) {
     padding: 0.2rem 0.3rem;
     font-size: 1.2rem;

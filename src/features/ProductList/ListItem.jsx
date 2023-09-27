@@ -9,7 +9,9 @@ import Button from '../../ui/Button';
 
 const StyledListItem = styled.div`
   background-color: white;
-  border: 1px solid var(--color-grey-200);
+  border: 1px solid var(--color-grey-300);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-sm);
   height: 30rem;
   max-width: 80rem;
   padding: 1rem;
@@ -19,6 +21,7 @@ const StyledListItem = styled.div`
   justify-content: flex-start;
   align-items: center;
   gap: 1rem;
+
   @media (max-width: 768px) {
     height: 32rem;
     grid-template-columns: 1fr;
