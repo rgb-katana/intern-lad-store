@@ -1,18 +1,11 @@
 import styled, { keyframes } from 'styled-components';
 
 const rotate = keyframes`
-  0%, 100% {
-    animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
-  }
   0% {
-    transform: rotateY(0deg);
-  }
-  50% {
-    transform: rotateY(1800deg);
-    animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+    transform: rotate(0deg);
   }
   100% {
-    transform: rotateY(3600deg);
+    transform: rotate(360deg);
   }
 `;
 
@@ -21,13 +14,21 @@ const Spinner = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 64px;
-  height: 64px;
-  margin: 8px;
-  border-radius: 50%;
-  backdrop-filter: blur(10px);
-  background: var(--color-main-500);
-  animation: ${rotate} 3.4s cubic-bezier(0.17, 0.67, 0.83, 0.67) infinite;
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  &:after {
+    content: ' ';
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid var(--color-main-500);
+    border-color: var(--color-main-600) transparent var(--color-main-600)
+      transparent;
+    animation: ${rotate} 1.2s linear infinite;
+  }
 `;
 
 export default Spinner;

@@ -17,7 +17,7 @@ function CreateOrderForm() {
 
   const onSubmit = data => {
     if (cart.length === 0) return;
-    alert(`You've submitted the order`);
+    alert(`You've submitted the order width ${data}`);
     dispatch(clearCart());
   };
 

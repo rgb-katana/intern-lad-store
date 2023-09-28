@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
 
@@ -65,3 +67,7 @@ function Slider({ images }) {
 }
 
 export default Slider;
+
+Slider.propTypes = {
+  images: PropTypes.array,
+};

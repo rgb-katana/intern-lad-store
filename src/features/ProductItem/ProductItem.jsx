@@ -121,5 +121,6 @@ ProductItem.propTypes = {
     price: PropTypes.number,
     description: PropTypes.string,
     images: PropTypes.array,
+    id: PropTypes.number,
   }),
 };

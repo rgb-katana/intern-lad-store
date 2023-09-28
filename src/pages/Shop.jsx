@@ -6,6 +6,8 @@ import { useSelector } from 'react-redux';
 
 const StyledShop = styled.div`
   padding: 2rem;
+  height: 80%;
+  min-height: 100vh;
 `;
 
 function Shop() {
