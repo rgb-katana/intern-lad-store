@@ -15,7 +15,7 @@ const StyledProductList = styled.div`
   align-items: center;
   justify-content: center;
   gap: 2rem;
-  height: 100%;
+  min-height: 80vh;
   margin-bottom: 2rem;
   position: relative;
 `;

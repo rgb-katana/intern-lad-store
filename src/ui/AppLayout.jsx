@@ -17,7 +17,7 @@ const Main = styled.main`
 const Container = styled.div`
   max-width: 120rem;
   margin: 0 auto;
-  height: 100%;
+  min-height: 100%;
 `;
 
 function AppLayout() {
