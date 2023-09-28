@@ -29,25 +29,34 @@ const SlideContainer = styled.div`
 
 const InfoContainer = styled.div`
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 0.3fr 0.3fr 0.3fr 0.3fr 1fr;
   padding: 1rem 0.5rem;
-  border: 1px solid var(--color-grey-200);
-  background-color: white;
+  max-width: 60rem;
+  /* border: 1px solid var(--color-grey-200); */
+  /* background-color: white; */
   @media (max-width: 768px) {
     grid-row: 2 / 3;
+    max-width: 50rem;
+    margin: 0 auto;
   }
 `;
 
 const BuyContainer = styled.div`
-  margin-top: 2rem;
-  grid-column: 1 / 2;
-  grid-row: 2 / -1;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: start;
-  @media (max-width: 768px) {
+  margin-top: 1rem;
+  /* @media (max-width: 768px) {
     grid-row: 3 / -1;
-  }
+  } */
+`;
+
+const BoldTextSpan = styled.span`
+  font-weight: 600;
+`;
+
+const RegularTextSpan = styled.span`
+  font-weight: 400;
 `;
 
 function ProductItem({ product }) {
@@ -73,20 +82,32 @@ function ProductItem({ product }) {
         <Slider images={images} />
       </SlideContainer>
       <InfoContainer>
-        <h3>Brand: {brand}</h3>
-        <h2>Product title: {title}</h2>
-        <p>Description: {description}</p>
-        <span>Price: ${price}</span>
+        <h3>
+          <BoldTextSpan>Brand:</BoldTextSpan>{' '}
+          <RegularTextSpan>{brand}</RegularTextSpan>
+        </h3>
+        <h2>
+          <BoldTextSpan>Product title:</BoldTextSpan>{' '}
+          <RegularTextSpan>{title}</RegularTextSpan>
+        </h2>
+        <p>
+          <BoldTextSpan>Description:</BoldTextSpan>{' '}
+          <RegularTextSpan>{description}</RegularTextSpan>
+        </p>
+        <span>
+          <BoldTextSpan>Price:</BoldTextSpan>{' '}
+          <RegularTextSpan>${price}</RegularTextSpan>
+        </span>
+        <BuyContainer>
+          {isInCart && (
+            <UpdateItemQuantity
+              product={product}
+              currentQuantity={currentQuantity}
+            />
+          )}
+          {!isInCart && <Button onClick={handleAddToCart}>Add to cart</Button>}
+        </BuyContainer>
       </InfoContainer>
-      <BuyContainer>
-        {isInCart && (
-          <UpdateItemQuantity
-            product={product}
-            currentQuantity={currentQuantity}
-          />
-        )}
-        {!isInCart && <Button onClick={handleAddToCart}>Add to cart</Button>}
-      </BuyContainer>
     </StyledProductItem>
   );
 }

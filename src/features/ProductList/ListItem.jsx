@@ -17,7 +17,6 @@ const StyledListItem = styled.div`
   padding: 1rem;
   display: grid;
   grid-template-columns: 2fr 1fr;
-  grid-template-rows: 2fr 1fr;
   justify-content: flex-start;
   align-items: center;
   gap: 1rem;
@@ -33,9 +32,13 @@ const StyledListItem = styled.div`
 const ImgContainer = styled.div`
   display: block;
   width: auto;
-  max-width: 35rem;
-  height: 15rem;
+  max-width: 40rem;
+  height: 20rem;
   overflow: hidden;
+  @media (max-width: 768px) {
+    max-width: 35rem;
+    height: 15rem;
+  }
 `;
 
 const StyledImg = styled.img`
@@ -61,6 +64,12 @@ const BuyContainer = styled.div`
     grid-column: 1;
     grid-row: 3 / -1;
   }
+`;
+
+const StyledInfoBuy = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 `;
 
 function ListItem({ product }) {
@@ -89,19 +98,21 @@ function ListItem({ product }) {
       <ImgContainer>
         <StyledImg src={product.images[0]} alt={product.title} />
       </ImgContainer>
-      <StyledTitlePrice>
-        <span style={{ textAlign: 'center' }}>{product.title}</span>
-        <span>${product.price}</span>
-      </StyledTitlePrice>
-      <BuyContainer>
-        {isInCart && (
-          <UpdateItemQuantity
-            product={product}
-            currentQuantity={currentQuantity}
-          />
-        )}
-        {!isInCart && <Button onClick={handleAddToCart}>Add to cart</Button>}
-      </BuyContainer>
+      <StyledInfoBuy>
+        <StyledTitlePrice>
+          <span style={{ textAlign: 'center' }}>{product.title}</span>
+          <span>${product.price}</span>
+        </StyledTitlePrice>
+        <BuyContainer>
+          {isInCart && (
+            <UpdateItemQuantity
+              product={product}
+              currentQuantity={currentQuantity}
+            />
+          )}
+          {!isInCart && <Button onClick={handleAddToCart}>Add to cart</Button>}
+        </BuyContainer>
+      </StyledInfoBuy>
     </StyledListItem>
   );
 }

@@ -53,6 +53,9 @@ html {
 }
 
 body {
+  font-family: "Poppins", sans-serif;
+  color: var(--color-grey-700);
+
   min-height: 100vh;
   font-size: 1.6rem;
 }

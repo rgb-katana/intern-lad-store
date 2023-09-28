@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const StyledFormRow = styled.div`
   display: grid;
   align-items: center;
-  grid-template-columns: 10rem 1fr 0.5fr;
+  grid-template-columns: 15rem 1fr 0.5fr;
   gap: 1.2rem;
 
   padding: 1.2rem 0;
@@ -36,11 +36,13 @@ const StyledFormRow = styled.div`
 const Label = styled.label`
   font-weight: 500;
   text-align: right;
+  align-self: center;
 `;
 
 const Error = styled.span`
   font-size: 1.4rem;
   color: var(--color-red-700);
+  align-self: center;
 `;
 
 function FormRow({ label, error, children }) {
