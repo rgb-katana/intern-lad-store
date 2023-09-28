@@ -5,6 +5,9 @@ const StyledFooter = styled.footer`
   color: var(--color-grey-50);
   height: 5rem;
   border-top: 1px solid var(--color-main-200);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 function Footer() {

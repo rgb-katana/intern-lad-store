@@ -22,9 +22,10 @@ const StyledListItem = styled.div`
   gap: 1rem;
 
   @media (max-width: 768px) {
-    height: 32rem;
-    grid-template-columns: 1fr;
-    grid-template-rows: 2fr 1fr 1fr;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
   cursor: pointer;
 `;

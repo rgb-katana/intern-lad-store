@@ -12,10 +12,8 @@ const StyledCart = styled.div`
   padding-bottom: 0.8rem;
   padding: 2rem;
   display: flex;
-  justify-content: center;
   flex-direction: column;
   align-items: center;
-  height: 100%;
 `;
 
 const StyledNavLink = styled(NavLink)`

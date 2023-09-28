@@ -17,8 +17,6 @@ function Product() {
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
 
-  console.log(isLoading);
-
   useEffect(
     function () {
       async function getProduct() {
@@ -27,7 +25,6 @@ function Product() {
             `https://dummyjson.com/products/${id}`
           );
           setIsLoading(false);
-          console.log(response);
           setProduct(response.data);
         } catch (error) {
           console.error(error);

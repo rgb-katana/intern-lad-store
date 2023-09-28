@@ -22,7 +22,7 @@ export const getProducts = createAsyncThunk(
       const response = await axios.get(requestLink);
       return response.data.products;
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   }
 );

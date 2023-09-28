@@ -3,10 +3,12 @@ import FormRow from '../../ui/FormRow';
 import Input from '../../ui/Input';
 import Button from '../../ui/Button';
 import Form from '../../ui/Form';
-import { useSelector } from 'react-redux';
-import { getTotalCartPrice } from '../Cart/cartSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearCart, getCart, getTotalCartPrice } from '../Cart/cartSlice';
 
 function CreateOrderForm() {
+  const dispatch = useDispatch();
+  const cart = useSelector(getCart);
   const {
     register,
     handleSubmit,
@@ -14,7 +16,9 @@ function CreateOrderForm() {
   } = useForm();
 
   const onSubmit = data => {
-    console.log(data);
+    if (cart.length === 0) return;
+    alert(`You've submitted the order`);
+    dispatch(clearCart());
   };
 
   const price = useSelector(getTotalCartPrice);

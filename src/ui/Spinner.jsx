@@ -19,8 +19,8 @@ const rotate = keyframes`
 const Spinner = styled.div`
   position: absolute;
   top: 50%;
-  left: 46.5%;
-  display: inline-block;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 64px;
   height: 64px;
   margin: 8px;
