@@ -1,8 +1,21 @@
-# React + Vite
+# Краткое описание реализованного функционала.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Это SPA по теме интернет магазин, я решил не выбирать из предложенных и выбрал свою тему.
+Здесь я использовал dummyjson API.
+Функционал:
+<ol>
+  <li>Маршруты с помощью React Router:
+    <ul>
+      <li>shop/products/:id с пагинацией, на каждой странице по 10 товаров</li> 
+      <li>shop/cart с теми товарами которые мы добавляем в корзину</li> 
+      <li>shop/order с формой для заказа, после отправки заказа очищается корзина</li>
+      <li>shop/product/:id это индивидуальные страницы товаров</li>
+    </ul>
+  </li>
+  <li>Redux Toolkit для хранения товаров в корзине</li>
+  <li>Redux Toolkit с CreateAsyncThunk для загрузки товаров на каждой страницы с помощью axios</li>
+  <li>Форму на shop/order сделал с помощью react-hook-form</li>
+  <li>Слайдер на shop/product/:id сделал с помощью react-slideshow-image</li>
+</ol>
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
